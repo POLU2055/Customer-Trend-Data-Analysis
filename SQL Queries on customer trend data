@@ -1,0 +1,53 @@
+SQL Queries and Results on Customers Dataset
+1. Select the first 5 rows from the table
+SQL: SELECT * FROM customers LIMIT 5; Answer:
+customerid gender age paymentmethod
+C241288 Female 28.0 Credit Card
+C111565 Male 21.0 Debit Card
+C266599 Male 20.0 Cash
+C988172 Female 66.0 Credit Card
+C189076 Female 53.0 Cash
+2. Total number of customers
+SQL: SELECT COUNT(*) FROM customers; Answer: 99,457
+3. Unique payment methods
+SQL:SELECTDISTINCTpaymentmethodFROMcustomers; Answer:CreditCard,DebitCard,Cash
+4. Number of customers by gender
+SQL: SELECT gender, COUNT(*) FROM customers GROUP BY gender; Answer:
+Female: 59,482, Male: 39,975
+5. Average age of all customers
+SQL: SELECT AVG(age) FROM customers; Answer: 43.43 years
+6. Customer IDs and ages of the 5 oldest customers
+SQL:SELECTcustomerid,ageFROMcustomersORDERBYageDESCLIMIT5
+7. Number of customers older than 50
+SQL: SELECT COUNT(*) FROM customers WHERE age ¿ 50; Answer: 36,054
+8. Customers using Credit Card
+SQL:SELECTCOUNT(*)FROMcustomersWHEREpaymentmethod =′ CreditCard′; Answer:34,931
+9. Minimum and maximum age
+SQL: SELECTMIN(age), MAX(age) FROM customers; Answer: Min: 18.0, Max: 69.0
+10. Count customers by payment method in descend
+ing order
+SQL:SELECTpaymentmethod,COUNT(∗)ascountFROMcustomersGROUPBYpaymentmethodORDERBYcountDESC
+44, 447,CreditCard : 34,931,DebitCard : 20,079
+11. Average age by gender
+SQL: SELECT gender, AVG(age) FROM customers GROUP BY gender; 
+male: 43.45, Male: 43.38
+12. Customers exactly 30 years old
+SQL: SELECT COUNT(*) FROM customers WHERE age = 30; Answer: 1,978
+13. Customers aged between 20 and 25
+SQL: SELECT COUNT(*) FROM customers WHERE age BETWEEN 20 AND 25;
+Answer: 11,570
+14. First 5 customer IDs using Debit Card
+SQL:SELECTcustomeridFROMcustomersWHEREpaymentmethod =′ DebitCard′LIMIT5; 
+15. Most frequent payment method for customers
+over 60
+SQL:SELECTpaymentmethod,COUNT(∗)FROMcustomersWHEREage > 60GROUPBYpayment
+16. Customers whose ID starts with ’C1’
+SQL:SELECTCOUNT(*)FROMcustomersWHEREcustomeridLIKE′C1Answer:31,259
+17. Average age of customers using Cash
+SQL:SELECTAVG(age)FROMcustomersWHEREpaymentmethod =′ Cash′; Answer:43.45years
+18. Count of customers NOT using Cash
+SQL:SELECTCOUNT(*)FROMcustomersWHEREpaymentmethod! =′ Cash′; Answer:55,010
+19. Gender distribution of customers using DebitCard
+SQL:SELECTgender, COUNT(*)FROMcustomersWHEREpaymentmethod =′ DebitCard′GROUPBYgender;
+20. Customers with null age
+SQL: SELECT COUNT(*) FROM customers WHERE age IS NULL; Answer: 119
